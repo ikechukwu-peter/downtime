@@ -1,4 +1,4 @@
-## Downtiem
+## Downtime
 
 > A simple downtime monitoring tool with nodejs
 
@@ -10,7 +10,7 @@
 - NodeJs
 - EJS
 
-## Getting Started ☀️
+## Getting Started
 
 To get a local copy up and running follow these simple example steps.
 
