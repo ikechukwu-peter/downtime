@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>System Status</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 40px;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        background-color: #fff;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      strong {
+        font-weight: bold;
+      }
+      .up {
+        color: green;
+      }
+      .down {
+        color: red;
+      }
+      .status {
+        font-style: italic;
+      }
+      .no-systems {
+        text-align: center;
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>System Status</h1>
+    <% if (systems && systems.length > 0) { %>
+    <ul>
+      <% systems.forEach(system => { %>
+      <li>
+        <strong><%= system.url %></strong>:
+        <span class="<%= system.status %>">
+          <%= system.status === 'up' ? 'Up' : 'Down' %>
+        </span>
+        <span class="status"
+          >(Last checked: <%= new
+          Date(system.lastChecked).toLocaleString("en-US", {hour: '2-digit',
+          minute: '2-digit', hour12: true}) %>, Status code: <%=
+          system.statusCode %>)</span
+        >
+      </li>
+      <% }); %>
+    </ul>
+    <% } else { %>
+    <p class="no-systems">No systems available</p>
+    <% } %>
+  </body>
+</html>
